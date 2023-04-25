@@ -19,7 +19,7 @@ import FeatureBlogs from '../components/FeatureBlogs';
 import Trending from '../components/Trending';
 import Search from '../components/Search';
 import { isEmpty, isNull } from 'lodash';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Category from '../components/Category';
 import Footer from '../components/Footer';
 
@@ -39,6 +39,7 @@ const Home = ({ setActive, user, active }) => {
   const queryString = useQuery();
   const searchQuery = queryString.get('searchQuery');
   const location = useLocation();
+  const navigate = useNavigate();
 
   const getTrendingBlogs = async () => {
     const blogRef = collection(db, 'blogs');
@@ -88,7 +89,7 @@ const Home = ({ setActive, user, active }) => {
 
   const getBlogs = async () => {
     const blogRef = collection(db, 'blogs');
-    const firstFour = query(blogRef, orderBy('title'), limit(4));
+    const firstFour = query(blogRef, orderBy('timestamp', 'desc'), limit(4));
     const docSnapshot = await getDocs(firstFour);
     setBlogs(docSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     setLastVisible(docSnapshot.docs[docSnapshot.docs.length - 1]);
@@ -110,17 +111,15 @@ const Home = ({ setActive, user, active }) => {
   };
 
   const fetchMore = async () => {
-    setLoading(true);
     const blogRef = collection(db, 'blogs');
     const nextFour = query(
       blogRef,
-      orderBy('title'),
+      orderBy('timestamp', 'desc'),
       limit(4),
       startAfter(lastVisible)
     );
     const docSnapshot = await getDocs(nextFour);
     updateState(docSnapshot);
-    setLoading(false);
   };
 
   const searchBlogs = async () => {
@@ -171,10 +170,9 @@ const Home = ({ setActive, user, active }) => {
   const handleDelete = async (id) => {
     if (window.confirm('Вы уверены, что хотите удалить этот пост ?')) {
       try {
-        setLoading(true);
         await deleteDoc(doc(db, 'blogs', id));
+        setTimeout(() => document.location.reload(), 500);
         toast.success('Пост удален');
-        setLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -184,7 +182,6 @@ const Home = ({ setActive, user, active }) => {
   const handleChange = (e) => {
     const { value } = e.target;
     if (isEmpty(value)) {
-      console.log('test');
       getBlogs();
       setHide(false);
     }

@@ -160,7 +160,7 @@ nav.navbar.navbar-expand-lg.navbar-light {
 
 .description-box {
   @include border-radius(10!important);
-  height: 150px;
+  height: 400px;
   resize: none;
   padding-top: 20px !important;
   letter-spacing: 1px !important;
@@ -369,7 +369,6 @@ nav.navbar.navbar-expand-lg.navbar-light {
 //About
 .about {
   padding-top: 40px;
-  padding-left: 21%;
   padding-bottom: 40px;
   text-align: left;
 }
@@ -704,12 +703,6 @@ nav.navbar.navbar-expand-lg.navbar-light {
   font-weight: 500;
   margin: 0 10px;
   @include transition(0.5s);
-}
-
-.btn_pagging:hover,
-.btn_pagging:focus {
-  background: #0a2973 !important;
-  color: #fff;
 }
 
 .scroll {

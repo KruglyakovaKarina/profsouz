@@ -16,6 +16,7 @@ import BlogSection from '../components/BlogSection';
 import Pagination from '../components/Pagination';
 import Spinner from '../components/Spinner';
 import { db } from '../firebase';
+import Footer from '../components/Footer';
 
 const Blogs = ({ setActive }) => {
   const [loading, setLoading] = useState(false);
@@ -38,7 +39,7 @@ const Blogs = ({ setActive }) => {
   const getBlogsData = async () => {
     setLoading(true);
     const blogRef = collection(db, 'blogs');
-    const first = query(blogRef, orderBy('title'), limit(6));
+    const first = query(blogRef, orderBy('timestamp', 'desc'), limit(6));
     const docSnapshot = await getDocs(first);
     setBlogs(docSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     setCount(docSnapshot.size);
@@ -118,6 +119,7 @@ const Blogs = ({ setActive }) => {
           handlePageChange={handlePageChange}
         />
       </div>
+      <Footer />
     </div>
   );
 };

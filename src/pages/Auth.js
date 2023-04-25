@@ -54,13 +54,17 @@ const Auth = ({ setActive, setUser }) => {
       if (password !== confirmPassword) {
         return toast.error('Пароли не совпадают');
       }
+      if (password.length < 6) {
+        return toast.error('Пароль должен состоять минимум из 6 символов');
+      }
       if (firstName && lastName && email && password) {
         const { user } = await createUserWithEmailAndPassword(
           auth,
           email,
           password
         );
-        await updateProfile(user, { displayName: `${firstName} ${lastName}` });
+        //await
+        updateProfile(user, { displayName: `${firstName} ${lastName}` });
         setActive('home');
       } else {
         return toast.error('Все поля должны быть заполнены');

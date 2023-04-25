@@ -21,6 +21,7 @@ import CategoryBlog from './pages/CategoryBlog';
 import ScrollToTop from './components/ScrollToTop';
 import Blogs from './pages/Blogs';
 import EditProfile from './pages/EditProfile';
+import Info from './pages/Info';
 
 function App() {
   const [active, setActive] = useState('home');
@@ -115,7 +116,8 @@ function App() {
           path='/category/:category'
           element={<CategoryBlog setActive={setActive} />}
         />
-        <Route path='/about' element={<About />} />
+        <Route path='/about' element={<About setActive={setActive} />} />
+        <Route path='/info' element={<Info setActive={setActive} />} />
         <Route
           path='/auth'
           element={<Auth setActive={setActive} setUser={setUser} />}

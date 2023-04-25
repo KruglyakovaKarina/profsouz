@@ -18,7 +18,7 @@ const Pagination = ({ currentPage, handlePageChange, noOfPages }) => {
             disabled={currentPage === noOfPages}
             onClick={() => handlePageChange('Вперед')}
           >
-            Вперед <i className='fa fa-long-arrow-right'></i>&nbsp;&nbsp;
+            Вперед&nbsp;&nbsp;<i className='fa fa-long-arrow-right'></i>
           </button>
         </div>
       </div>

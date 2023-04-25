@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
-import { excerpt } from '../utility';
+import { excerpt, cutTegs } from '../utility';
 
 const BlogSection = ({
   id,
@@ -36,7 +36,7 @@ const BlogSection = ({
             </span>
           </div>
           <div className='short-description text-start'>
-            {excerpt(description, 250)}
+            {excerpt(cutTegs(description), 250)}
           </div>
           <Link to={`/detail/${id}`}>
             <button className='btn btn-read'>Подробнее</button>

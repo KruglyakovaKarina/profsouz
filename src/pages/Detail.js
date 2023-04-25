@@ -23,6 +23,7 @@ import Tags from '../components/Tags';
 import UserComments from '../components/UserComments';
 import { db } from '../firebase';
 import Spinner from '../components/Spinner';
+import Footer from '../components/Footer';
 
 export const correctEnding = (num) => {
   const txt = ['иев', 'ия', 'ий'];
@@ -138,7 +139,6 @@ const Detail = ({ setActive, user }) => {
     }
   };
 
-  console.log('relatedBlogs', relatedBlogs);
   return (
     <div className='single'>
       <div
@@ -172,7 +172,10 @@ const Detail = ({ setActive, user }) => {
 
                 <Like handleLike={handleLike} likes={likes} userId={userId} />
               </span>
-              <p className='text-start'>{blog?.description}</p>
+              <div
+                className='text-start'
+                dangerouslySetInnerHTML={{ __html: blog?.description }}
+              />
               <div className='text-start'>
                 <Tags tags={blog?.tags} />
               </div>
@@ -203,12 +206,13 @@ const Detail = ({ setActive, user }) => {
               />
             </div>
             <div className='col-md-3'>
-              <FeatureBlogs title={'Недавние посты'} blogs={blogs} />
+              <FeatureBlogs title={'Недавно опубликовано'} blogs={blogs} />
             </div>
           </div>
           <RelatedBlog id={id} blogs={relatedBlogs} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

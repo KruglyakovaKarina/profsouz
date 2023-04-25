@@ -27,6 +27,7 @@ const initialState = {
 const categoryOption = [
   'Новости',
   'Мероприятия',
+  'Поздравления',
   'Опросы',
   'Полезная информация',
   'Спорт',
@@ -86,7 +87,6 @@ const AddEditBlog = ({ user, setActive }) => {
 
   useEffect(() => {
     id && getBlogDetail();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const getBlogDetail = async () => {

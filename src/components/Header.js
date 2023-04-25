@@ -78,7 +78,7 @@ const Header = ({ active, setActive, user, handleLogout }) => {
                     className={`nav-item nav-link ${
                       active === 'info' ? 'active' : ''
                     }`}
-                    onClick={() => setActive('imfo')}
+                    onClick={() => setActive('info')}
                   >
                     Важно знать
                   </li>
