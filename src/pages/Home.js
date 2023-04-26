@@ -243,7 +243,7 @@ const Home = ({ setActive, user, active }) => {
                 </button>
               )}
             </div>
-            <div className='col-md-3'>
+            <div className='col-md-4 column2'>
               <Search search={search} handleChange={handleChange} />
 
               <FeatureBlogs title={'Недавние посты'} blogs={blogs} />

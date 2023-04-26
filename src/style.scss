@@ -46,6 +46,12 @@
   background-repeat: no-repeat;
 }
 
+@media (min-width: 1400px) and (max-width: 5000px) {
+  .column2 {
+    padding-left: 100px;
+  }
+}
+
 .navbar-light .navbar-nav .open > .nav-link,
 .navbar-light .navbar-nav .active > .nav-link,
 .navbar-light .navbar-nav .nav-link.open,
@@ -53,10 +59,10 @@
   color: #fff !important;
   padding-top: 12px !important;
   padding-bottom: 15px !important;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-  margin: 0 20px !important;
-  @include transition(0.5s);
+  padding-left: 13px !important;
+  padding-right: 13px !important;
+  margin: 0 10px !important;
+  //@include transition(0.5s);
   background: #1f469d !important;
   @include clip-path(polygon(100% 0, 100% 85%, 14% 85%, 0 100%, 0% 60%, 0 0));
 }
@@ -64,10 +70,10 @@
   color: #222 !important;
   padding-top: 12px !important;
   padding-bottom: 15px !important;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-  margin: 0 20px !important;
-  @include transition(0.5s);
+  padding-left: 13px !important;
+  padding-right: 13px !important;
+  margin: 0 10px !important;
+  //@include transition(0.5s);
   position: relative !important;
   @include clip-path(polygon(100% 0, 100% 85%, 14% 85%, 0 100%, 0% 60%, 0 0));
 
@@ -77,9 +83,9 @@
     color: #fff !important;
     padding-top: 12px !important;
     padding-bottom: 15px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    margin: 0 20px;
+    padding-left: 13px !important;
+    padding-right: 13px !important;
+    margin: 0 10px;
     position: relative;
   }
 }
@@ -88,8 +94,10 @@ nav.navbar.navbar-expand-lg.navbar-light {
   background-color: #7ec6ff;
 }
 
-.mobile_logo_width {
-  display: none;
+@media (min-width: 320px) and (max-width: 1020px) {
+  .mobile_logo_width {
+    display: none;
+  }
 }
 
 .navbar-nav {
@@ -116,6 +124,15 @@ nav.navbar.navbar-expand-lg.navbar-light {
 .alignright {
   margin-top: 20px;
   float: right;
+}
+
+@media (min-width: 320px) and (max-width: 1020px) {
+  .alignright {
+    float: none;
+  }
+  .alignleft {
+    float: none;
+  }
 }
 
 // form

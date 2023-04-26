@@ -25,6 +25,14 @@ const Header = ({ active, setActive, user, handleLogout }) => {
               id='navbarSupportedContent'
             >
               <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+                <Link to='/'>
+                  <li className='profile-logo mobile_logo_width'>
+                    <img
+                      src='https://profkomvtb.ru/wp-content/uploads/2022/06/vtbprof_logo_main_rgb-e1655940462305.png'
+                      style={{ height: '40px', paddingRight: '30px' }}
+                    />
+                  </li>
+                </Link>
                 <Link to='/' style={{ textDecoration: 'none' }}>
                   <li
                     className={`nav-item nav-link ${
